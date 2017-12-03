@@ -3,15 +3,19 @@ import numpy as np
 import os
 from scipy.misc import imsave
 import cv2
+import time
 #************************************INPUT_FOLDER*************************************************
-folder='t'
+folder='testing'
 #*************************************NOISE_INTENSITY**********************************************
 intensity=2
 
 list = os.listdir(folder) # dir is your directory path
 number_files = len(list)
-print(number_files)
+#print(number_files)
 d = 0
+
+print('Starting Conversion')
+time.sleep(3)
 for file in os.listdir(folder):
     outfile = 'noise/file_%d.jpg' % d
     image = misc.imread(os.path.join(folder, file), mode="L")
@@ -26,6 +30,7 @@ for file in os.listdir(folder):
         print('Conversion Done!')
         print('Thresholding....')
 #************************************INPUT_NOISE_FOLDER**********************************************
+time.sleep(3)
 there='noise'
 
 list = os.listdir(there)
@@ -43,6 +48,10 @@ for file in os.listdir(there):
 
     percentage = (d / number_files) * 100
     print(percentage)
+    if percentage >= 100:
+        print('Thresholding Done!')
+
+
 
 
 
